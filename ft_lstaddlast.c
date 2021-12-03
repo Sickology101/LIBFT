@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_lstaddlast(t_list **alst, t_list *new)
+void	ft_lstaddlast(t_list *alst, t_list *new)
 {
 	while (alst)
 	{
