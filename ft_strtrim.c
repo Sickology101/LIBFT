@@ -41,24 +41,10 @@ static	size_t	trimend(const char *s)
 	return (index);
 }
 
-char	*ft_strtrim(char const *s)
+static	char	*assign_string(char *dest, const char *s, size_t start, size_t end)
 {
-	size_t	start;
-	size_t	end;
-	char	*dest;
 	size_t	index;
 
-	start = trimstart(s);
-	end = trimend(s);
-	if (end < start)
-	{
-		dest = (char *)malloc(sizeof(char) * 1);
-		dest[0] = '\0';
-		return (dest);
-	}
-	dest = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!dest)
-		return (NULL);
 	index = 0;
 	while (start <= end)
 	{
@@ -67,6 +53,27 @@ char	*ft_strtrim(char const *s)
 		start++;
 	}
 	dest[index] = '\0';
+	return (dest);
+}
+
+char	*ft_strtrim(char const *s)
+{
+	size_t	start;
+	size_t	end;
+	char	*dest;
+
+	start = trimstart(s);
+	end = trimend(s);
+	if (end < start || ft_strlen(s) == 0)
+	{
+		dest = (char *)malloc(sizeof(char) * 1);
+		dest[0] = '\0';
+		return (dest);
+	}
+	dest = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (!dest)
+		return (NULL);
+	dest = assign_string(dest, s, start, end);
 	return (dest);
 }
 
