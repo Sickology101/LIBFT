@@ -41,16 +41,16 @@ static	size_t	trimend(const char *s)
 	return (index);
 }
 
-static	char	*assign_string(char *dest, const char *s, size_t start, size_t end)
+static	char	*assign_string(char *dest, const char *s, size_t b, size_t e)
 {
 	size_t	index;
 
 	index = 0;
-	while (start <= end)
+	while (b <= e)
 	{
-		dest[index] = s[start];
+		dest[index] = s[b];
 		index++;
-		start++;
+		b++;
 	}
 	dest[index] = '\0';
 	return (dest);
